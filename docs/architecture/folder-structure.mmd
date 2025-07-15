@@ -1,0 +1,39 @@
+%% ────────────────  FOLDER STRUCTURE MODEL  ────────────────
+graph TD
+    %% ── LEGEND ──
+    subgraph Key [ ]
+      direction LR
+      A0[Root]:::root --> A1[Feature slice]:::feature --> A2[Atomic layer]:::atomic --> A3[Implementation file]
+    end
+    class Key,Key-innerkey fill:#ffffff00,stroke:#ffffff00;
+
+    %% ── ACTUAL TREE ──
+    R["src/"]:::root
+      R --> F["features/"]:::root
+
+      %% TEMPLATE 1 – one feature == one user story/epic
+      F --> FW["{story-id}-{feature-name}/"]:::feature
+        FW --> FWAtoms["atoms/  💧 <reusable primitives>"]:::atomic
+          FWAtoms --> FWAtomsFiles["*.tsx\n*.scss"]:::file
+        FW --> FWMol["molecules/  🍶 <composed widgets>"]:::atomic
+        FW --> FWOrg["organisms/  🧩 <full sections>"]:::atomic
+        FW --> FWPages["pages/  📄 <Next.js or routes>"]:::atomic
+        FW --> FWHooks["hooks/  🪝 <feature hooks>"]:::atomic
+        FW --> FWTests["__tests__/  ✅"]:::atomic
+        FW --> FWReadme["README.md  🗒️ (front-matter binds storyId)"]:::file
+
+      %% TEMPLATE 2 – truly global design-system code
+      R --> Shared["shared/"]:::root
+        Shared --> SAtoms["atoms/ (btn, icon, …)"]:::atomic
+        Shared --> SMol["molecules/"]:::atomic
+        Shared --> SOrg["organisms/"]:::atomic
+        Shared --> Utils["utils/"]:::atomic
+
+      R --> Config["config/ (tsconfig.json, lint, jest)"]:::file
+      R --> Docs["docs/  📚 (auto-generated diagrams)"]:::file
+
+    %% ── STYLE RULES ──
+    classDef root   fill:#fafafa,stroke:#333,stroke-width:1.2px,font-weight:bold;
+    classDef feature fill:#e0f2ff,stroke:#0277bd,stroke-width:1px;
+    classDef atomic fill:#f1fff1,stroke:#2e7d32,stroke-width:1px;
+    classDef file   stroke-dasharray: 4 4;
