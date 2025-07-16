@@ -8,7 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Setup
 corepack enable           # Enable package manager version management
 yarn install              # Install dependencies (uses Yarn 4 workspaces)
-cp .env.example .env      # Copy environment variables
+cp frontend/.env.example frontend/.env      # Copy frontend environment variables
+cp backend/.env.example backend/.env        # Copy backend environment variables
 
 # Development
 yarn dev                  # Start all services (Next.js:3000, CF Worker:8787, Storybook:6006)
@@ -38,6 +39,39 @@ This project uses **Yarn 4** with **Volta** for consistent tooling across develo
 - Node.js: 20.10.0 (pinned via Volta)
 - Yarn: 4.0.2 (pinned via Volta)
 - Package Manager: Configured via `packageManager` field in package.json
+
+## Environment Configuration
+
+This project uses a shared environment configuration pattern:
+
+- **Environment Files**: Both frontend and backend have `.env.example` files listing required variables
+- **Configuration Loaders**: Each project has a `config/index.ts` file that loads and validates environment variables
+- **Type Safety**: All configuration is type-safe with proper TypeScript interfaces
+- **Validation**: Required variables throw errors if missing, optional variables have defaults
+
+### Required Environment Variables
+
+**Frontend** (`frontend/.env`):
+- `FIREBASE_PROJECT_ID`, `FIREBASE_API_KEY`, etc. - Firebase configuration
+- `REVENUECAT_KEY` - RevenueCat subscription management
+- `POSTHOG_API_KEY` - PostHog analytics
+- `GCS_BUCKET_NAME` - Google Cloud Storage
+
+**Backend** (`backend/.env`):
+- `FIREBASE_PROJECT_ID`, `FIREBASE_PRIVATE_KEY`, etc. - Firebase admin configuration
+- `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` - Cloudflare Workers deployment
+- `AI_API_KEY`, `AI_API_URL` - AI service integration
+- `JWT_SECRET`, `ENCRYPTION_KEY` - Security configuration
+
+### Usage
+```typescript
+// Import configuration in your code
+import { appConfig } from './config';
+
+// Use type-safe configuration
+const firebaseConfig = appConfig.firebase;
+const isAnalyticsEnabled = appConfig.features.enableAnalytics;
+```
 
 ## Architecture Overview
 
@@ -99,27 +133,29 @@ This is a **Story Generator** application with a feature-first architecture:
 
 ## Current Work Status
 
-### User Story 1.4 — Add Basic Yarn 4 Workspaces and Volta Configuration
+### User Story 1.5 — Create a Shared `.env.example` and Config Pattern
 **Status**: ✅ Complete
 
 **Completed Work**:
-- ✅ Migrated from pnpm to Yarn 4 with workspaces
-- ✅ Added Volta configuration for Node.js and Yarn version pinning
-- ✅ Created .yarnrc.yml configuration with node-modules linker
-- ✅ Updated root package.json with workspaces field
-- ✅ Updated all scripts to use Yarn workspace commands
-- ✅ Enabled Corepack for automatic package manager management
-- ✅ Tested workspace functionality and commands
+- ✅ Created `.env.example` files in both frontend and backend directories
+- ✅ Added environment variables for PostHog, RevenueCat, Firestore, GCS, AI APIs, etc.
+- ✅ Set up dotenv configuration for both projects
+- ✅ Added comprehensive `.gitignore` file to ignore `.env` files and other artifacts
+- ✅ Created `config/` folders with TypeScript configuration loaders
+- ✅ Added type-safe configuration interfaces with validation
+- ✅ Tested configuration loading in both projects
 - ✅ Updated documentation in CLAUDE.md
 
 **Files Created/Modified**:
-- `/package.json` (added workspaces, volta config, updated scripts)
-- `/.yarnrc.yml` (Yarn 4 configuration)
-- `/CLAUDE.md` (updated commands and documentation)
+- `/frontend/.env.example` (frontend environment variables template)
+- `/backend/.env.example` (backend environment variables template)
+- `/frontend/config/index.ts` (frontend configuration loader)
+- `/backend/config/index.ts` (backend configuration loader)
+- `/.gitignore` (comprehensive gitignore file)
+- `/CLAUDE.md` (updated with environment configuration documentation)
 
-**Tool Versions**:
-- Node.js: 20.10.0 (pinned via Volta)
-- Yarn: 4.0.2 (pinned via Volta)
+### User Story 1.4 — Add Basic Yarn 4 Workspaces and Volta Configuration
+**Status**: ✅ Complete
 
 ### User Story 1.3 — Configure ESLint and Prettier with TypeScript Support
 **Status**: In Progress - ESLint configuration needs debugging
