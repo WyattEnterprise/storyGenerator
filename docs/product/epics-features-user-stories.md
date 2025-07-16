@@ -119,7 +119,7 @@
 `package.json` in root enables Yarn workspaces:
 
  json  
-CopyEdit  
+  
 `{`  
   `"workspaces": ["frontend", "backend"]`  
 `}`
@@ -130,7 +130,7 @@ CopyEdit
 `volta` field in root `package.json` pins:
 
  json  
-CopyEdit  
+  
 `"volta": {`  
   `"node": "20.10.0",`  
   `"yarn": "4.0.2"`  
@@ -2022,7 +2022,7 @@ Securely store avatar images in Cloudflare R2 with signed URLs. Cache thumbnails
 Create merged object:
 
  ts  
-CopyEdit  
+  
 `{`  
   `childName: string,`  
   `photoUrls?: string[],`  
@@ -2428,7 +2428,7 @@ CopyEdit
 Final object includes:
 
  ts  
-CopyEdit  
+  
 `{`  
   `theme: string,`  
   `readingLevel: string,`  
@@ -2554,7 +2554,7 @@ CopyEdit
 If tone sliders are used, include them:
 
  ts  
-CopyEdit  
+  
 `tone: {`  
   `romance: 10,`  
   `moral: 70,`  
@@ -2566,7 +2566,7 @@ CopyEdit
 Else, use simple theme:
 
  ts  
-CopyEdit  
+  
 `theme: 'Adventure'`
 
 *   
@@ -2622,7 +2622,7 @@ CopyEdit
 Config map in `readingLevels.ts`:
 
  ts  
-CopyEdit  
+  
 `{ ageBand: '5–6', cefr: 'A1', grade: 1 }`
 
 *   
@@ -2708,7 +2708,7 @@ CopyEdit
 Prompt contains:
 
  ts  
-CopyEdit  
+  
 `readingLevel: 'A2'`
 
 *   
@@ -2791,7 +2791,7 @@ CopyEdit
 Save values to:
 
  ts  
-CopyEdit  
+  
 `storySetupConfig.structure = {`  
   `flashbacks: boolean,`  
   `epilogue: boolean`  
@@ -2825,7 +2825,7 @@ CopyEdit
 Prompt JSON contains:
 
  ts  
-CopyEdit  
+  
 `{`  
   `durationDays: number,`  
   `structure: {`  
@@ -2937,7 +2937,7 @@ CopyEdit
 Prompt object contains:
 
  ts  
-CopyEdit  
+  
 `{`  
   `branches: 3,`  
   `successBias: 70`  
@@ -2978,7 +2978,7 @@ CopyEdit
 Object contains:
 
  ts  
-CopyEdit  
+  
 `{`  
   `theme?: string,`  
   `tone?: { romance: number, ... },`  
@@ -3127,7 +3127,7 @@ CopyEdit
 Output format:
 
  ts  
-CopyEdit  
+  
 `{`  
   `system: "You are a world-class children’s storyteller...",`  
   `user: "Generate a 15-minute bedtime story for a 5-year-old...",`  
@@ -3179,7 +3179,7 @@ CopyEdit
 Each chunk labeled:
 
  ts  
-CopyEdit  
+  
 `{`  
   `branchId: "b1",`  
   `day: 2,`  
@@ -3217,7 +3217,7 @@ CopyEdit
 Output: `imagePrompt` per chunk:
 
  ts  
-CopyEdit  
+  
 `{`  
   `textChunk: "...",`  
   `imagePrompt: "A cheerful pirate child discovering a glowing map..."`  
@@ -3264,7 +3264,7 @@ CopyEdit
 On success, save to:
 
  ts  
-CopyEdit  
+  
 `{`  
   `jobId: string,`  
   `branchId: string,`  
@@ -3305,7 +3305,7 @@ CopyEdit
 Document fields:
 
  ts  
-CopyEdit  
+  
 `{`  
   `status: 'complete',`  
   `text: string,`  
@@ -3345,7 +3345,7 @@ CopyEdit
 Add/update a counter on job doc:
 
  ts  
-CopyEdit  
+  
 `{`  
   `totalChunks: number,`  
   `completedChunks: number`  
@@ -3388,7 +3388,7 @@ CopyEdit
 POST to OpenAI Image API with:
 
  ts  
-CopyEdit  
+  
 `{`  
   `prompt: string,`  
   `model: "dall-e-3",`  
@@ -3435,7 +3435,7 @@ CopyEdit
 Save in Firestore under:
 
  ts  
-CopyEdit  
+  
 `storyJobs/{jobId}/branches/{branchId}/days/{n}.imageUrl`
 
 * 
@@ -3466,7 +3466,7 @@ CopyEdit
 Image URL added to the correct Firestore document:
 
  ts  
-CopyEdit  
+  
 `{`  
   `text: "Once upon a time...",`  
   `imageUrl: "https://r2.example.com/signed/..."`  
@@ -3511,7 +3511,7 @@ CopyEdit
 Creates job metadata in Firestore:
 
  ts  
-CopyEdit  
+  
 `{`  
   `jobId: string,`  
   `userId: string,`  
@@ -3553,7 +3553,7 @@ CopyEdit
 Add to `storyJobQueue()`:
 
  ts  
-CopyEdit  
+  
 `{`  
   `jobId, branchId, day, promptChunk, imagePrompt`  
 `}`
@@ -3593,7 +3593,7 @@ CopyEdit
 Server sends JSON:
 
  ts  
-CopyEdit  
+  
 `{`  
   `type: "progress",`  
   `completed: 3,`  
@@ -3605,7 +3605,7 @@ CopyEdit
 On error:
 
  ts  
-CopyEdit  
+  
 `{`  
   `type: "error",`  
   `message: "GPT failed on day 2"`  
@@ -3643,7 +3643,7 @@ CopyEdit
 Update job:
 
  ts  
-CopyEdit  
+  
 `status: "complete",`  
 `finishedAt: timestamp`
 
@@ -3652,7 +3652,7 @@ CopyEdit
 Send WebSocket message:
 
  ts  
-CopyEdit  
+  
 `{ type: "done" }`
 
 * 
@@ -3788,7 +3788,7 @@ CopyEdit
 Store last visited page per story:
 
  ts  
-CopyEdit  
+  
 `localProgress = {`  
   `jobId: "abc123",`  
   `branchId: "b1",`  
@@ -3976,7 +3976,7 @@ CopyEdit
 Choices pulled from:
 
  ts  
-CopyEdit  
+  
 `storyJobs/{jobId}/branches/`
 
 *   
@@ -4039,7 +4039,7 @@ CopyEdit
 Update Firestore:
 
  ts  
-CopyEdit  
+  
 `storyJobs/{jobId}.selectedBranchId = "b3"`
 
 *   
@@ -4083,7 +4083,7 @@ CopyEdit
 Estimate stored in Firestore:
 
  ts  
-CopyEdit  
+  
 `storyJobs/{jobId}.estimatedReadTime: number (in minutes)`
 
 * 
@@ -4177,7 +4177,7 @@ CopyEdit
 Each cached story marked with:
 
  ts  
-CopyEdit  
+  
 `offlineAvailable: true`
 
 *   
@@ -4201,7 +4201,7 @@ CopyEdit
 Load progress from local storage:
 
  ts  
-CopyEdit  
+  
 `localProgress[jobId] = {`  
   `branchId: "b1",`  
   `page: 3`  
@@ -4485,7 +4485,7 @@ CopyEdit
 Show timestamp in Firestore:
 
  ts  
-CopyEdit  
+  
 `storyJobs/{jobId}.lastOpenedAt = timestamp`
 
 * 
@@ -4985,7 +4985,7 @@ CopyEdit
 On iOS, opens:
 
  ts  
-CopyEdit  
+  
 `Linking.openURL("itms-apps://subscriptions")`
 
 *   
@@ -5025,7 +5025,7 @@ CopyEdit
 Store response in:
 
  ts  
-CopyEdit  
+  
 `{`  
   `totalCredits: number,`  
   `rolloverCredits: number,`  
@@ -5067,7 +5067,7 @@ CopyEdit
 Use `useStorySettings()` to calculate:
 
  ts  
-CopyEdit  
+  
 `{`  
   `length: 15 | 30,`  
   `branches: number`  
@@ -5097,7 +5097,7 @@ CopyEdit
 Store transaction in Firestore:
 
  ts  
-CopyEdit  
+  
 `userCredits/{uid}/transactions/{txId}`
 
 *   
@@ -5144,7 +5144,7 @@ CopyEdit
 Logic example:
 
  ts  
-CopyEdit  
+  
 `if (duration <= 15) return 1;`  
 `if (duration <= 30) return 2;`
 
@@ -5256,7 +5256,7 @@ CopyEdit
 RevenueCat SDK call:
 
  ts  
-CopyEdit  
+  
 `const customerInfo = await Purchases.getCustomerInfo();`  
 `const plan = customerInfo.entitlements.active["story_plan"]?.identifier;`
 
@@ -5434,7 +5434,7 @@ CopyEdit
 Use router:
 
  ts  
-CopyEdit  
+  
 `router.push("/subscribe")`
 
 *  or open App Store with `Linking.openURL(...)`
