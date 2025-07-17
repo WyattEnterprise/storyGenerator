@@ -37,6 +37,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1743e285-11fb-4b5f-8c49-e179294ff89e"
+      }
+    },
+    "owner": "lucaswyatt"
   }
 }
