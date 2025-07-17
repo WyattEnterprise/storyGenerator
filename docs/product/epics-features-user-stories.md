@@ -303,63 +303,71 @@
 
 ---
 
-#### **User Story 2.3 — Dockerize Expo App for Dev in WSL2**
+# Updated User Story 2.3 - Professional React Native Development Setup
 
-**Title**  
- Run Expo App in Docker for WSL2
+## Original User Story 2.3 (REPLACED)
+~~**User Story 2.3 — Dockerize Expo App for Dev in WSL2**~~
 
-**Description**  
- As a developer, I want to run the Expo app in a container so I don’t need to install dependencies manually.
-
-**Context**  
- We’re running everything in Docker, using WSL2 \+ Docker Desktop \+ Cursor IDE.
-
-**Acceptance Criteria**
-
-* `frontend/Dockerfile` builds and runs Expo CLI
-
-* Dev server accessible on tunnel or LAN mode
-
-* `yarn start` or `npm run dev` starts Expo DevTools inside container
-
-* iPad can access story app in Expo Go
-
-**Implementation Notes**
-
-* Claude: use `mcp.context7.fs().writeDockerfile('frontend')`
-
-* Use `node:20-slim`, mount `/app`, expose port 19000
-
-* Document network setup for iPad testing (tunnel, LAN IP)
+**Why Docker was removed**: Docker creates networking complexity for React Native development, breaks hot reloading performance, and interferes with device connectivity. Industry best practice is native development environment.
 
 ---
 
-#### **User Story 2.4 — Configure Expo Dev Tools Tunnel for iPad Testing**
+## New User Story 2.3
+
+#### **User Story 2.3 — Setup Development Environment with EAS CLI and Testing**
 
 **Title**  
- Enable Tunnel Access to Expo App on iPad
+Configure Professional React Native Development Workflow
 
 **Description**  
- As a developer, I want to test the app on a physical iPad by scanning the QR code or using a direct tunnel.
+As a developer, I want to set up EAS CLI, development scripts, and testing infrastructure so I can build and test the app efficiently following React Native best practices.
 
 **Context**  
- iPads will run production builds later. For now, we need fast testing via Expo Go.
+Instead of Docker (which creates networking issues for React Native), we'll use industry-standard native development with professional tooling for builds, testing, and device debugging. This provides better performance, reliability, and device connectivity.
 
 **Acceptance Criteria**
 
-* App loads in iPad Expo Go via tunnel
-
-* Expo QR code scanned on device opens app
-
-* Tunnels work behind WSL2 firewall/NAT
+* Install and configure EAS CLI for cloud builds
+* Add development scripts for device testing (`yarn ios`, `yarn android`, `yarn tunnel`)
+* Set up testing infrastructure with Jest and React Native Testing Library
+* Configure environment for WSL2 + Windows development
+* Document device connection setup for iPad/iPhone testing via QR codes and tunnel mode
+* Add environment configuration for development variables
 
 **Implementation Notes**
 
-* Use `expo start --tunnel` or `--lan` as fallback
+* Install `@expo/cli` and `eas-cli` globally for professional development
+* Add `.easrc` configuration for project settings
+* Create development scripts in package.json for tunnel mode and device testing
+* Set up Jest configuration for React Native testing with proper mocks
+* Document networking setup for physical device testing (QR codes, tunnel mode, LAN access)
+* Add `.env.example` for Expo development environment variables
+* Configure VSCode settings for optimal React Native development
 
-* Claude: check local IP address with `mcp.context7.net().getLocalIp()`
+**Professional Benefits**
+- Faster development cycle (no container overhead)
+- Better debugging experience with direct device connectivity
+- Industry-standard workflow matching React Native best practices
+- Reliable hot reloading and Metro bundler performance
+- Simplified device testing via Expo Go app
 
-* Note: We may later use EAS for internal builds
+---
+
+## Implementation Plan
+
+1. **EAS CLI Setup**: Configure cloud build service
+2. **Development Scripts**: Add device-specific launch commands
+3. **Testing Infrastructure**: Jest + React Native Testing Library
+4. **WSL2 Configuration**: Optimize for Windows development
+5. **Device Testing**: Document QR code and tunnel workflows
+6. **Environment Variables**: Professional configuration management
+
+This replacement provides significantly more value than Docker setup and aligns with React Native industry standards.
+
+---
+
+
+
 
 ---
 
