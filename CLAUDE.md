@@ -154,6 +154,25 @@ This is a **Story Generator** application with a feature-first architecture:
 - `/.gitignore` (comprehensive gitignore file)
 - `/CLAUDE.md` (updated with environment configuration documentation)
 
+### User Story 1.6 — Dockerize Frontend and Backend Projects
+**Status**: ✅ Complete
+
+**Completed Work**:
+- ✅ Created `frontend/Dockerfile` for Next.js development environment
+- ✅ Created `backend/Dockerfile` for Hono development environment  
+- ✅ Set up `docker-compose.yml` with proper service configuration
+- ✅ Fixed Yarn 4 workspace structure in Docker containers
+- ✅ Updated containers to use correct Yarn version (4.0.2)
+- ✅ Configured port exposures (frontend:3000, backend:8787)
+- ✅ Set up volume mounts for development hot-reloading
+- ✅ Added comprehensive Docker instructions in README.md
+
+**Files Created/Modified**:
+- `/frontend/Dockerfile` (Next.js container configuration)
+- `/backend/Dockerfile` (Hono container configuration)
+- `/docker-compose.yml` (multi-service container orchestration)
+- `/README.md` (Docker setup and usage instructions)
+
 ### User Story 1.4 — Add Basic Yarn 4 Workspaces and Volta Configuration
 **Status**: ✅ Complete
 
