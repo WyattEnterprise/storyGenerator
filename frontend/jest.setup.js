@@ -1,7 +1,7 @@
-import '@testing-library/jest-native/extend-expect';
+import "@testing-library/jest-native/extend-expect";
 
 // Mock expo-router
-jest.mock('expo-router', () => ({
+jest.mock("expo-router", () => ({
   useRouter: () => ({
     push: jest.fn(),
     replace: jest.fn(),
@@ -12,22 +12,22 @@ jest.mock('expo-router', () => ({
 }));
 
 // Mock expo modules
-jest.mock('expo-font', () => ({
+jest.mock("expo-font", () => ({
   useFonts: () => [true],
 }));
 
-jest.mock('expo-constants', () => ({
+jest.mock("expo-constants", () => ({
   default: {
     expoConfig: {
-      name: 'story-generator-frontend',
-      slug: 'story-generator-frontend',
+      name: "story-generator-frontend",
+      slug: "story-generator-frontend",
     },
   },
 }));
 
 // Mock react-native-gesture-handler
-jest.mock('react-native-gesture-handler', () => {
-  const View = require('react-native/Libraries/Components/View/View');
+jest.mock("react-native-gesture-handler", () => {
+  const View = require("react-native/Libraries/Components/View/View");
   return {
     Swipeable: View,
     DrawerLayout: View,
@@ -53,15 +53,19 @@ jest.mock('react-native-gesture-handler', () => {
     RectButton: View,
     BorderlessButton: View,
     FlatList: View,
-    gestureHandlerRootHOC: jest.fn().mockImplementation(component => component),
+    gestureHandlerRootHOC: jest
+      .fn()
+      .mockImplementation((component) => component),
     Directions: {},
   };
 });
 
 // Mock react-native-reanimated
-jest.mock('react-native-reanimated', () => {
-  const Reanimated = require('react-native-reanimated/mock');
-  Reanimated.default.call = () => {};
+jest.mock("react-native-reanimated", () => {
+  const Reanimated = require("react-native-reanimated/mock");
+  Reanimated.default.call = () => {
+    // Empty function for reanimated mock
+  };
   return Reanimated;
 });
 
