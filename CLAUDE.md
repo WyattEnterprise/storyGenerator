@@ -224,3 +224,56 @@ The GitHub MCP server provides comprehensive GitHub functionality without requir
 - `/README.md` (Updated for React Native development)
 - `/CLAUDE.md` (Updated architecture and development commands)
 - `/frontend-nextjs-backup/` (Backup of original Next.js frontend)
+
+### User Story 2.2 — Add Expo App Entry Point with Navigation Stub
+**Status**: ✅ Complete
+
+**Completed Work**:
+- ✅ Installed React Navigation dependencies (`@react-navigation/native`, `@react-navigation/native-stack`)
+- ✅ Installed required Expo dependencies (`react-native-screens`, `react-native-safe-area-context`)
+- ✅ Created navigation folder structure with `navigation/index.tsx`
+- ✅ Implemented stack navigator with basic HomeScreen component
+- ✅ Updated home screen to display "Hello, Storytime!" as required
+- ✅ Added standalone `App.tsx` with NavigationContainer for future use
+- ✅ Verified TypeScript compilation and ESLint checks pass
+- ✅ Tested navigation works in Expo development server
+- ✅ Updated yarn.lock with proper dependency resolutions
+
+**Files Created/Modified**:
+- `/frontend/navigation/index.tsx` (Stack navigator with HomeScreen)
+- `/frontend/App.tsx` (NavigationContainer setup)
+- `/frontend/app/(tabs)/index.tsx` (Updated to show "Hello, Storytime!")
+- `/frontend/package.json` (Added React Navigation dependencies)
+- `/yarn.lock` (Updated with new dependency resolutions)
+
+### User Story 2.3 — Setup Development Environment with EAS CLI and Testing
+**Status**: ✅ Complete
+
+**Note**: Replaced original Docker-based User Story 2.3 with professional React Native development setup following industry best practices.
+
+**Completed Work**:
+- ✅ Installed and configured EAS CLI for cloud builds
+- ✅ Added comprehensive development scripts (`tunnel`, `lan`, `android:dev`, `ios:dev`, `build:*`)
+- ✅ Set up Jest and React Native Testing Library with proper configuration
+- ✅ Configured WSL2 development environment for optimal performance
+- ✅ Created comprehensive device testing documentation
+- ✅ Added environment variable configuration with `.env` support
+- ✅ Installed ngrok for tunnel mode device connectivity
+- ✅ Verified lint and typecheck processes pass
+
+**Files Created/Modified**:
+- `/frontend/package.json` (Added development scripts and testing dependencies)
+- `/frontend/jest.config.js` (Jest configuration for React Native testing)
+- `/frontend/jest.setup.js` (Jest mocks and setup for Expo/React Native)
+- `/frontend/.env` (Environment variables for development)
+- `/frontend/WSL2-DEVELOPMENT-GUIDE.md` (Comprehensive WSL2 + device testing guide)
+- `/frontend/app/__tests__/index.test.tsx` (Sample test for Jest setup verification)
+- `/frontend/app/(tabs)/index.tsx` (Added testID for testing)
+- `/docs/product/user-story-2.3-replacement.md` (Documentation of replacement rationale)
+
+**Professional Benefits**:
+- Industry-standard React Native development workflow
+- Reliable device connectivity via tunnel mode
+- Professional testing infrastructure with Jest
+- Optimized WSL2 + Windows development setup
+- EAS build integration for cloud builds
