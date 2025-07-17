@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { serve } from '@hono/node-server';
 
 const app = new Hono();
 
@@ -17,4 +18,10 @@ app.get('/health', (c) => {
   });
 });
 
-export default app;
+const port = 8787;
+console.log(`Server is running on port ${port}`);
+
+serve({
+  fetch: app.fetch,
+  port
+});

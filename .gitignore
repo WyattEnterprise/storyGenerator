@@ -164,4 +164,4 @@ temp/
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
-.pnp.*
+.pnp.*.mcp*.json
