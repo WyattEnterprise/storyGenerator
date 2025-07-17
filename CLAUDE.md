@@ -112,6 +112,15 @@ This is a **Story Generator** application with a feature-first architecture:
 - All interactive elements need ARIA labels for accessibility
 - Maintain WCAG 2.1 AA color contrast standards
 
+## GitHub Operations
+
+**IMPORTANT**: Always use GitHub MCP server tools for ALL GitHub operations. Never use GitHub CLI.
+
+- Use MCP tools: `mcp__github__*` functions for all GitHub interactions
+- Do NOT use: `gh` commands or GitHub CLI for any operations
+
+The GitHub MCP server provides comprehensive GitHub functionality without requiring separate authentication.
+
 ## Documentation
 
 - Comprehensive docs are in `/docs` with index at `docs/index.md`
