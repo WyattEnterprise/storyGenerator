@@ -12,13 +12,23 @@ cp frontend/.env.example frontend/.env      # Copy frontend environment variable
 cp backend/.env.example backend/.env        # Copy backend environment variables
 
 # Development
-yarn dev                  # Start all services (Next.js:3000, CF Worker:8787, Storybook:6006)
-yarn test                 # Run test suite (vitest + Playwright)
-yarn lint                 # Run linter (eslint + stylelint)
-yarn format               # Format code (prettier)
-yarn typecheck            # Type checking
-yarn size:ci              # Bundle size analysis
-yarn docs:preview         # Preview docs at localhost:5173
+yarn dev                  # Start all services (React Native Expo + Hono backend:8787)
+yarn test                 # Run test suite (backend only)
+yarn lint                 # Run linter (Expo + backend)
+yarn format               # Format code (backend only)
+yarn typecheck            # Type checking (backend only)
+
+# Frontend Development (React Native/Expo)
+yarn workspace story-generator-frontend start      # Start Expo development server
+cd frontend && npx expo start                      # Alternative: run from frontend directory
+npx expo start --web                              # Run on web browser
+npx expo start --android                          # Run on Android emulator
+npx expo start --ios                              # Run on iOS simulator
+
+# Backend Development (Docker)
+docker-compose up backend                          # Start backend only
+docker-compose logs -f backend                     # View backend logs
+docker-compose down                               # Stop backend
 
 # Workspace Commands
 yarn workspace story-generator-frontend <command>  # Run command in frontend workspace
@@ -77,8 +87,8 @@ const isAnalyticsEnabled = appConfig.features.enableAnalytics;
 
 This is a **Story Generator** application with a feature-first architecture:
 
-- **Frontend**: Next.js 14 with React 19 and TypeScript
-- **Edge Workers**: Cloudflare Workers with Hono Router for business logic
+- **Frontend**: React Native with Expo SDK 53, React 19, and TypeScript
+- **Backend**: Hono Router with TypeScript (runs in Docker container)
 - **Database**: Firestore (Native mode) for persistence
 - **Storage**: Google Cloud Storage for assets
 - **AI Integration**: External AI API for story generation and avatar creation
@@ -102,6 +112,13 @@ This is a **Story Generator** application with a feature-first architecture:
 2. **Branching**: Use `feat/{storyId}-{slug}` pattern
 3. **Commits**: Prefix with `[Story {storyId}]`
 4. **Quality Gates**: All PRs must pass lint, format, tests, typecheck, and bundle size checks
+
+### Development Environment Setup
+
+- **Frontend**: React Native/Expo runs natively on your development machine (no Docker)
+- **Backend**: Runs in Docker container for consistent development environment
+- **Mobile Testing**: Use Expo Go app on your phone or iOS Simulator/Android Emulator
+- **Hot Reloading**: Both frontend (Metro bundler) and backend (Docker volumes) support hot reloading
 
 ## Important Constraints
 
@@ -164,23 +181,21 @@ The GitHub MCP server provides comprehensive GitHub functionality without requir
 - `/CLAUDE.md` (updated with environment configuration documentation)
 
 ### User Story 1.6 — Dockerize Frontend and Backend Projects
-**Status**: ✅ Complete
+**Status**: ✅ Complete (Backend Only)
 
 **Completed Work**:
-- ✅ Created `frontend/Dockerfile` for Next.js development environment
 - ✅ Created `backend/Dockerfile` for Hono development environment  
-- ✅ Set up `docker-compose.yml` with proper service configuration
+- ✅ Set up `docker-compose.yml` with backend service configuration
 - ✅ Fixed Yarn 4 workspace structure in Docker containers
 - ✅ Updated containers to use correct Yarn version (4.0.2)
-- ✅ Configured port exposures (frontend:3000, backend:8787)
+- ✅ Configured port exposures (backend:8787)
 - ✅ Set up volume mounts for development hot-reloading
-- ✅ Added comprehensive Docker instructions in README.md
+- ✅ Updated documentation for Docker backend + native frontend approach
 
 **Files Created/Modified**:
-- `/frontend/Dockerfile` (Next.js container configuration)
 - `/backend/Dockerfile` (Hono container configuration)
-- `/docker-compose.yml` (multi-service container orchestration)
-- `/README.md` (Docker setup and usage instructions)
+- `/docker-compose.yml` (backend-only container orchestration)
+- `/README.md` (Updated for React Native + Docker backend setup)
 
 ### User Story 1.4 — Add Basic Yarn 4 Workspaces and Volta Configuration
 **Status**: ✅ Complete
@@ -188,3 +203,24 @@ The GitHub MCP server provides comprehensive GitHub functionality without requir
 ### User Story 1.3 — Configure ESLint and Prettier with TypeScript Support
 **Status**: In Progress - ESLint configuration needs debugging
 **Note**: ESLint packages are installed but configuration conflicts need resolution
+
+### User Story 2.1 — Scaffold React Native App with TypeScript Template
+**Status**: ✅ Complete
+
+**Completed Work**:
+- ✅ Replaced Next.js frontend with React Native Expo app
+- ✅ Initialized app with TypeScript template using Expo SDK 53 (latest)
+- ✅ Configured app to render basic Text elements via ThemedText components
+- ✅ Verified app compiles and runs with TypeScript support (`npx tsc --noEmit`)
+- ✅ Integrated with existing Yarn 4 workspace structure
+- ✅ Updated root package.json scripts for Expo development workflow
+- ✅ Updated documentation for React Native development workflow
+- ✅ Removed Docker configuration for frontend (not needed for React Native)
+
+**Files Created/Modified**:
+- `/frontend/` (Complete React Native Expo app with TypeScript)
+- `/frontend/package.json` (Updated workspace name and dependencies)
+- `/package.json` (Updated root scripts for Expo development)
+- `/README.md` (Updated for React Native development)
+- `/CLAUDE.md` (Updated architecture and development commands)
+- `/frontend-nextjs-backup/` (Backup of original Next.js frontend)

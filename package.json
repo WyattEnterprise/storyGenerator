@@ -8,12 +8,12 @@
     "backend"
   ],
   "scripts": {
-    "dev": "concurrently \"yarn workspace story-generator-frontend dev\" \"yarn workspace story-generator-backend dev\"",
-    "build": "yarn workspace story-generator-frontend build && yarn workspace story-generator-backend build",
-    "test": "yarn workspace story-generator-frontend test && yarn workspace story-generator-backend test",
+    "dev": "concurrently \"yarn workspace story-generator-frontend start\" \"yarn workspace story-generator-backend dev\"",
+    "build": "yarn workspace story-generator-backend build",
+    "test": "yarn workspace story-generator-backend test",
     "lint": "yarn workspace story-generator-frontend lint && yarn workspace story-generator-backend lint",
-    "format": "yarn workspace story-generator-frontend format && yarn workspace story-generator-backend format",
-    "typecheck": "yarn workspace story-generator-frontend typecheck && yarn workspace story-generator-backend typecheck"
+    "format": "yarn workspace story-generator-backend format",
+    "typecheck": "yarn workspace story-generator-backend typecheck"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

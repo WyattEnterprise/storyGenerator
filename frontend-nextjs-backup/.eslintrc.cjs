@@ -13,19 +13,14 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['prettier'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
+    'next/core-web-vitals',
     'prettier',
   ],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
@@ -33,12 +28,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-function': 'warn',
-    '@typescript-eslint/no-require-imports': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
     'prefer-const': 'error',
     'no-var': 'error',
-    'no-console': 'warn',
   },
-  ignorePatterns: ['dist/*', 'node_modules/*'],
-}; 
+};
