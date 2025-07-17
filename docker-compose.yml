@@ -1,27 +1,5 @@
 
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: ./frontend/Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app/frontend
-      - ./package.json:/app/package.json
-      - ./yarn.lock:/app/yarn.lock
-      - ./.yarnrc.yml:/app/.yarnrc.yml
-      - ./.yarn:/app/.yarn
-      - /app/node_modules
-      - /app/frontend/node_modules
-      - /app/frontend/.next
-    environment:
-      - NODE_ENV=development
-    depends_on:
-      - backend
-    networks:
-      - story-generator
-
   backend:
     build:
       context: .

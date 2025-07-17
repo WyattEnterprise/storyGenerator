@@ -1,13 +1,15 @@
 # Story Generator
 
-A Next.js frontend and Hono backend application for generating stories.
+A React Native (Expo) frontend and Hono backend application for generating stories.
 
-## Development with Docker
+## Development Setup
 
 ### Prerequisites
 
-- Docker and Docker Compose installed
-- Docker Desktop running (for WSL2 users)
+- Node.js 20.10.0 (managed by Volta)
+- Yarn 4.0.2 (managed by Volta)
+- Docker and Docker Compose (for backend only)
+- Expo CLI for mobile development
 
 ### Quick Start
 
@@ -23,43 +25,77 @@ A Next.js frontend and Hono backend application for generating stories.
    cp backend/.env.example backend/.env
    ```
 
-3. **Start all services**
+3. **Install dependencies**
    ```bash
-   docker-compose up
+   corepack enable  # Enable package manager version management
+   yarn install     # Install all workspace dependencies
+   ```
+
+4. **Start development services**
+   ```bash
+   yarn dev
    ```
 
 This will start:
-- Frontend (Next.js) at http://localhost:3000
+- Frontend (React Native/Expo) - opens Metro bundler and QR code for mobile testing
 - Backend (Hono) at http://localhost:8787
+
+### Frontend Development (React Native/Expo)
+
+The frontend is a React Native app built with Expo. It runs natively on your development machine and connects to mobile devices or simulators.
+
+```bash
+# Start Expo development server
+yarn workspace story-generator-frontend start
+
+# Or from the frontend directory
+cd frontend
+npx expo start
+```
+
+Use the Expo Go app on your phone to scan the QR code, or use iOS Simulator/Android Emulator.
+
+### Backend Development (Docker)
+
+The backend runs in a Docker container for consistent development environment.
+
+```bash
+# Start backend only
+docker-compose up backend
+
+# View backend logs
+docker-compose logs -f backend
+
+# Stop backend
+docker-compose down
+
+# Rebuild backend container
+docker-compose up --build backend
+```
 
 ### Development Commands
 
 ```bash
-# Start services in background
-docker-compose up -d
+# Start all services (recommended)
+yarn dev
 
-# View logs
-docker-compose logs -f
+# Run tests
+yarn test
 
-# Stop services
-docker-compose down
+# Run linting
+yarn lint
 
-# Rebuild containers
-docker-compose up --build
+# Run type checking
+yarn typecheck
 
-# Run commands in containers
-docker-compose exec frontend yarn lint
-docker-compose exec backend yarn test
+# Format code
+yarn format
 ```
-
-## Local Development (without Docker)
-
-See [CLAUDE.md](./CLAUDE.md) for local development setup using Node.js and Yarn workspaces.
 
 ## Architecture
 
 This project uses:
-- **Frontend**: Next.js 14 with React 19 and TypeScript
-- **Backend**: Hono router with TypeScript
+- **Frontend**: React Native with Expo SDK 53, React 19, and TypeScript
+- **Backend**: Hono router with TypeScript (runs in Docker)
 - **Package Manager**: Yarn 4 with workspaces
 - **Tools**: Volta for Node.js version management
