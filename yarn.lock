@@ -425,6 +425,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hono/node-server@npm:^1.8.0":
+  version: 1.16.0
+  resolution: "@hono/node-server@npm:1.16.0"
+  peerDependencies:
+    hono: ^4
+  checksum: 5e1195446b78ffc88db3f3b67f3f69032f40e135a99a6f6d6e990f0563253fd3ef0a784b21774a3451d8501f99a9026c1c058891bf780c3e4b5ff0259938a8a7
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.13.0":
   version: 0.13.0
   resolution: "@humanwhocodes/config-array@npm:0.13.0"
@@ -3172,10 +3181,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hono@npm:^3.0.0":
-  version: 3.12.12
-  resolution: "hono@npm:3.12.12"
-  checksum: 93b77d51c24f1b60d61dbd0790b0a3a7481a762dbf25cc2d2598938b97ffd4f8f0c26f51964060099c0d358f1aea409877b71623b1744b3c049922b6db84f4da
+"hono@npm:^4.0.0":
+  version: 4.8.5
+  resolution: "hono@npm:4.8.5"
+  checksum: f3d4632c92a51c8de5f5b645fbbe510c7bdab87390c3e84ee8cc3ba8e1f8912fe52444e58681307d95e45581d38a8cb178f615f73602d0acc768bf801eea18c1
   languageName: node
   linkType: hard
 
@@ -5052,6 +5061,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "story-generator-backend@workspace:backend"
   dependencies:
+    "@hono/node-server": "npm:^1.8.0"
     "@types/node": "npm:^20.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
@@ -5059,7 +5069,7 @@ __metadata:
     eslint: "npm:^8.0.0"
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-prettier: "npm:^5.0.0"
-    hono: "npm:^3.0.0"
+    hono: "npm:^4.0.0"
     prettier: "npm:^3.0.0"
     tsx: "npm:^4.0.0"
     typescript: "npm:^5.0.0"

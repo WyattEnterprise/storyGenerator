@@ -14,8 +14,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hono/node-server": "^1.8.0",
     "dotenv": "^17.2.0",
-    "hono": "^3.0.0"
+    "hono": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -28,5 +29,6 @@
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
